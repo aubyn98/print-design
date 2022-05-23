@@ -7,6 +7,15 @@ import { getImgFile } from 'utils';
 import { ElMessage, ElLoading } from 'element-plus';
 import { printApi } from 'apis';
 
+const datasource = [
+  {
+    type: 'controls-txt',
+    defaultValue: '{当前时间}',
+    label: '当前时间',
+    name: '_system_currentDateTime'
+  }
+];
+
 let _cacheDragData: IndexType;
 const rate = 3.7799703663793105; // 1mm = xxx像素
 interface CheckPrintControl {
@@ -48,7 +57,7 @@ const store = defineStore('print-design', {
     previewTemplateData: {},
     // 当前激活的控件
     activeItem: null,
-    datasource: []
+    datasource
   }),
   getters: {
     /** 当前激活的控件类型 */
@@ -186,26 +195,7 @@ const store = defineStore('print-design', {
     /** 获取模板数据源 */
     getDatasource(type: string) {
       return printApi.get_print_datasource({ type }).then(res => {
-        this.datasource = [
-          {
-            type: 'controls-txt',
-            defaultValue: '{当前时间}',
-            label: '当前时间',
-            name: '_system_currentDateTime'
-          },
-          {
-            type: 'controls-txt',
-            defaultValue: '{当前登录用户}',
-            label: '当前登录用户',
-            name: '_system_currentLoginUserName'
-          },
-          {
-            type: 'controls-txt',
-            defaultValue: '{当前用户所属部门}',
-            label: '当前用户所属部门',
-            name: '_system_currentDepartmentName'
-          }
-        ];
+        this.datasource = datasource;
       });
     },
     /** 拖拽数据源控件 */

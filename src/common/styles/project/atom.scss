@@ -1,0 +1,100 @@
+@use '../variables.scss' as v;
+
+.color-blue {
+  color: v.$clr-blue;
+}
+.color-red {
+  color: v.$clr-red;
+}
+.color-green {
+  color: v.$clr-green;
+}
+.color-33 {
+  color: #333;
+}
+.color-66 {
+  color: #666;
+}
+.color-99 {
+  color: #999;
+}
+.color-50 {
+  color: #505050;
+}
+
+.bg-ff {
+  background-color: #fff;
+}
+.bg-f5 {
+  background-color: #f5f5f5;
+}
+
+@each $fs in 10, 11, 12, 13 {
+  .fs-#{$fs} {
+    font-size: $fs + px;
+  }
+}
+
+@each $size in 4, 8, 10, 12, 20 {
+  $_size: $size + px;
+  .margin-#{$size} {
+    margin: $_size;
+  }
+  .margin-l-#{$size} {
+    margin-left: $_size;
+  }
+  .margin-r-#{$size} {
+    margin-right: $_size;
+  }
+  .margin-lr-#{$size} {
+    margin: 0 $_size;
+  }
+  .margin-t-#{$size} {
+    margin-top: $_size;
+  }
+  .margin-b-#{$size} {
+    margin-bottom: $_size;
+  }
+  .margin-tb-#{$size} {
+    margin: $_size 0;
+  }
+}
+
+@each $size in 2, 4, 6, 8, 12, 16, 20 {
+  $_size: $size + px;
+  .pd-#{$size} {
+    padding: $_size;
+  }
+  .pd-l-#{$size} {
+    padding-left: $_size;
+  }
+  .pd-r-#{$size} {
+    padding-right: $_size;
+  }
+  .pd-lr-#{$size} {
+    padding: 0 $_size;
+  }
+  .pd-t-#{$size} {
+    padding-top: $_size;
+  }
+  .pd-b-#{$size} {
+    padding-bottom: $_size;
+  }
+  .pd-tb-#{$size} {
+    padding: $_size 0;
+  }
+}
+
+@each $size in 28, 44, 64, 84 {
+  .h-#{$size} {
+    height: $size + px;
+  }
+}
+
+.lh-20 {
+  line-height: 20px;
+}
+
+.pd-16-20 {
+  padding: 16px 20px;
+}

@@ -1,0 +1,86 @@
+$clr-orange: #fa742b;
+.vdr-container {
+  &.active,
+  &.dragging {
+    border-color: $clr-orange;
+    &::before,
+    &::after {
+      content: ' ';
+    }
+  }
+  &::before,
+  &::after {
+    position: absolute;
+    background: $clr-orange;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &::before {
+    width: 1px;
+    height: 6px;
+  }
+  &::after {
+    width: 6px;
+    height: 1px;
+  }
+  .vdr-handle {
+    z-index: 10;
+    background: $clr-orange;
+    border: none;
+    &.vdr-handle-tm,
+    &.vdr-handle-bm {
+      width: 16px;
+      height: 3px;
+      margin-left: 0;
+      transform: translateX(-50%);
+    }
+    &.vdr-handle-tm {
+      top: -2px;
+    }
+    &.vdr-handle-bm {
+      bottom: -2px;
+    }
+    &.vdr-handle-ml,
+    &.vdr-handle-mr {
+      width: 3px;
+      height: 16px;
+      margin-top: 0;
+      transform: translateY(-50%);
+    }
+    &.vdr-handle-ml {
+      left: -2px;
+    }
+    &.vdr-handle-mr {
+      right: -2px;
+    }
+    &.vdr-handle-tl,
+    &.vdr-handle-tr,
+    &.vdr-handle-bl,
+    &.vdr-handle-br {
+      width: 14px;
+      height: 14px;
+      background: transparent;
+    }
+    &.vdr-handle-tl,
+    &.vdr-handle-tr {
+      top: -2px;
+      border-top: solid 3px $clr-orange;
+    }
+    &.vdr-handle-bl,
+    &.vdr-handle-br {
+      bottom: -2px;
+      border-bottom: solid 3px $clr-orange;
+    }
+    &.vdr-handle-tl,
+    &.vdr-handle-bl {
+      left: -2px;
+      border-left: solid 3px $clr-orange;
+    }
+    &.vdr-handle-tr,
+    &.vdr-handle-br {
+      right: -2px;
+      border-right: solid 3px $clr-orange;
+    }
+  }
+}

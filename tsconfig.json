@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    // 这样就可以对 `this` 上的数据属性进行更严格的推断`
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["element-plus/global", "vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "assets/*": ["src/assets/*"],
+      "comps/*": ["src/components/*"],
+      "layout/*": ["src/layout/*"],
+      "views/*": ["src/views/*"],
+      "router": ["src/router"],
+      "router/*": ["src/router/*"],
+      "store": ["src/store"],
+      "store/*": ["src/store/*"],
+      "styles/*": ["src/common/styles/*"],
+      "utils": ["src/common/utils"],
+      "utils/*": ["src/common/utils/*"],
+      "apis": ["src/common/apis"],
+      "apis/*": ["src/common/apis/*"],
+      "plugins/*": ["src/common/plugins/*"],
+      "mixins/*": ["src/common/mixins/*"],
+      "uses": ["src/common/uses"],
+      "uses/*": ["src/common/uses/*"],
+      "config": ["src/common/config"],
+      "config/*": ["src/common/config/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "node_modules/vue-router"],
+  "exclude": ["node_modules"]
+}

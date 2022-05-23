@@ -1,0 +1,111 @@
+/* 
+  此文件用于重置html5的默认样式，
+  与项目相关的样式不要放在此文件内 
+*/
+
+// --------------- reset 浏览器默认 -------------------------
+
+// ---重置盒模型----
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+//------------------
+
+//---重置边距--------
+
+body,
+dl,
+dd,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+button,
+textarea,
+input {
+  padding: 0;
+}
+
+li,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+// ---------------
+
+ol,
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+i {
+  font-style: normal;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input,
+textarea,
+button {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+img {
+  user-select: none;
+  &[src=''],
+  &:not([src]) {
+    opacity: 0;
+  }
+}
+
+button {
+  user-select: none;
+  cursor: pointer;
+  &.no-pointer,
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #b2b2b2;
+}
+
+// --------------------------------------------------------------
+
+/* 
+  此文件用于重置html5的默认样式，
+  与项目相关的样式不要放在此文件内 
+*/

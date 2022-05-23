@@ -1,0 +1,32 @@
+.print-design-menu {
+  // height: 32px;
+}
+._scroll {
+  padding: 0 12px;
+}
+._header {
+  line-height: 20px;
+  font-size: 13px;
+  padding: 12px;
+  flex-shrink: 0;
+  user-select: none;
+}
+.left-panel,
+.right-panel {
+  position: fixed;
+  top: 64px;
+  background: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 6;
+  font-size: 12px;
+  max-height: calc(100% - 120px);
+}
+.left-panel {
+  width: 200px;
+  left: 26px;
+}
+.right-panel {
+  width: 300px;
+  right: 30px;
+}
+

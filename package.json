@@ -1,0 +1,29 @@
+{
+  "name": "print-design",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.5.0",
+    "axios": "^0.27.2",
+    "crypto-js": "^4.1.1",
+    "decimal.js": "^10.3.1",
+    "element-plus": "^2.2.1",
+    "lodash": "^4.17.21",
+    "lrz": "^4.9.41",
+    "pinia": "^2.0.14",
+    "qs": "^6.10.3",
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.15",
+    "vue3-draggable-resizable": "^1.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "sass": "^1.52.1",
+    "vite": "^2.9.9"
+  }
+}

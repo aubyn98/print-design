@@ -1,0 +1,66 @@
+@use '../variables.scss' as v;
+.el-button--text.is-danger {
+  color: v.$clr-red;
+}
+.el-button--text {
+  min-height: 20px;
+  line-height: 18px;
+  padding: 0;
+}
+.el-button {
+  .svg-icon {
+    margin-right: 4px;
+  }
+  &:hover,
+  &:focus {
+    .svg-icon {
+      fill: v.$clr-blue !important;
+    }
+  }
+}
+.el-radio-button--small {
+  .el-radio-button__inner {
+    padding: 7px 10px;
+  }
+}
+.order-btn-footer {
+  .el-button-group {
+    > .el-button {
+      line-height: 16px;
+      --el-border-color-base: #f0f0f0;
+      color: #505050;
+      padding: 3px 7px;
+      margin-right: 12px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        border-color: #f0f0f0;
+        color: #505050;
+        z-index: 0;
+      }
+      &:focus,
+      &:focus-within,
+      &:active {
+        z-index: 1;
+        &:hover {
+          border-color: v.$clr-blue;
+          color: v.$clr-blue;
+        }
+        border-color: v.$clr-blue;
+        color: v.$clr-blue;
+      }
+    }
+  }
+}
+
+/** 单据下的按钮样式 */
+.create-order-btn {
+  .el-button.el-button--small {
+    &.is-plain {
+      &.el-button--default {
+        // min-width: 128px;
+      }
+    }
+  }
+}

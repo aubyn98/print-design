@@ -1,0 +1,11 @@
+@mixin textLineClamp($num) {
+  @if $num == 1 {
+    white-space: nowrap;
+  } @else if $num > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

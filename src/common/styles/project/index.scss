@@ -1,0 +1,76 @@
+@use '../variables.scss' as v;
+@use '../default-layout.scss' as lay;
+@use './atom.scss' as *;
+
+* {
+  -webkit-app-region: no-drag;
+}
+html,
+body {
+  height: 100%;
+  
+}
+body {
+  min-width: 1200px;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  color: #333;
+  font: 12px / 1 'Microsoft YaHei', 'Microsoft YaHei-Regular';
+  word-break: break-all;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bjs-powered-by {
+  display: none; // 隐藏bpmn右下角图标
+}
+
+// 路由切换动画
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.25s ease-out;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+textarea {
+  max-width: 100%;
+  width: 100%;
+  height: 80px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  padding: 8px;
+  font-size: 12px;
+  color: #333;
+  &::-webkit-input-placeholder {
+    font-size: 12px;
+  }
+}
+
+// 旋转
+.rotate {
+  &.deg180 {
+    transform: rotate(-180deg);
+  }
+  transition: all 0.3s;
+}

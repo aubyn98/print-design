@@ -1,0 +1,41 @@
+@use '../variables.scss' as v;
+@use '../default-layout.scss' as lay;
+.el-checkbox.el-checkbox--small {
+  --el-checkbox-border-radius: 0;
+  --el-checkbox-input-border: 1px solid #e0e0e0;
+  --el-checkbox-input-border-color-hover: #{v.$clr-blue};
+  margin-right: 12px;
+  .el-checkbox__input .el-checkbox__inner {
+    width: 14px;
+    height: 14px;
+  }
+  &.is-checked {
+    .el-checkbox__input .el-checkbox__inner {
+      --el-checkbox-checked-bg-color: #{v.$clr-blue};
+      --el-checkbox-checked-input-border-color: #{v.$clr-blue};
+      &::after {
+        width: 3px;
+        height: 7px;
+      }
+    }
+  }
+  &.is-disabled {
+    --el-disabled-text-color: #{v.$clr-blue};
+    cursor: auto;
+    &:not(.is-checked) {
+      --el-disabled-text-color: #333;
+    }
+    .el-checkbox__input,
+    .el-checkbox__inner,
+    .el-checkbox__label {
+      cursor: auto;
+    }
+  }
+  &.c-el-checkbox {
+    margin-right: 16px;
+  }
+  .el-checkbox__label {
+    padding-left: 8px;
+    color: #666;
+  }
+}

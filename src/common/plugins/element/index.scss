@@ -1,0 +1,105 @@
+@use 'styles/variables.scss' as v;
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $common-component-size: (
+    'small': 28px,
+    'default': 32px,
+  ),
+  $colors: (
+    'primary': (
+      'base': v.$clr-blue,
+    ),
+    'success': (
+      'base': v.$clr-green,
+    ),
+    'warning': (
+      'base': v.$clr-yellow,
+    ),
+    'danger': (
+      'base': v.$clr-red,
+    ),
+    'error': (
+      'base': v.$clr-red,
+    ),
+    'info': (
+      'base': v.$clr-gray,
+    ),
+  ),
+  $font-size: (
+    'small': 12px,
+  ),
+  $border-radius: (
+    'small': 0,
+  ),
+  $button-padding-horizontal: (
+    'small': 11px,
+  ),
+  $checkbox: (
+    font-size: 12px,
+    text-color: #333,
+    disabled-input-fill: #f5f5f5,
+    disabled-checked-input-fill: v.$clr-blue,
+    disabled-checked-input-border-color: v.$clr-blue,
+    disabled-checked-icon-color: #fff,
+  ),
+  $input: (
+    'text-color': #333,
+    'border': 1px solid #f0f0f0,
+    'border-color': #f0f0f0,
+    'border-radius': 0,
+    'icon-color': #808080,
+    'placeholder-color': #808080,
+    'hover-border-color': #f0f0f0,
+    // 'clear-hover-color': var(--el-text-color-secondary),
+  ),
+  $input-disabled: (
+    'fill': #f5f5f5,
+    'border': #f0f0f0,
+    'text-color': #333,
+    'placeholder-color': #b2b2b2,
+  ),
+  $select: (
+    'border-color-hover': #f0f0f0,
+    'disabled-border': #f0f0f0,
+    'font-size': 12px,
+    'close-hover-color': var(--el-text-color-secondary),
+    'input-color': #808080,
+    // 'multiple-input-color': var(--el-text-color-regular),
+    'input-font-size': 12px,
+  ),
+  $select-option: (
+    'text-color': #505050,
+    'height': 32px,
+    'hover-background': v.$clr-light-blue,
+  ),
+  $select-dropdown: (
+    // 'bg-color': var(--el-color-white),
+    // 'shadow': var(--el-box-shadow-light),
+    // 'empty-color': var(--el-text-color-secondary),
+    'max-height': 274px,
+    'padding': 0,
+    'empty-padding': 10px 0,
+    'border': none,
+  ),
+  $form: (
+    label-font-size: '12px',
+  ),
+  $table: (
+    header-bg-color: #f8f8f8,
+  ),
+  $pagination: (
+    'font-size': 12px,
+    'border-radius': 0,
+    'button-width': 26px,
+    'button-height': 26px,
+    'button-disabled-color': #808080,
+    'button-disabled-bg-color': #f0f0f0,
+    'button-bg-color': transparent,
+    'height-extra-small': 24px,
+    'line-height-extra-small': 24px,
+  )
+);
+
+@use 'element-plus/theme-chalk/src/index.scss' as *;
+:root {
+  --el-border-radius-base: 0;
+}

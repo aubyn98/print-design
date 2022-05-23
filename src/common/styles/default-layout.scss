@@ -1,0 +1,374 @@
+// ------------------------滚动条---------------------------------
+
+.scroll-y {
+  overflow-y: auto;
+}
+
+::-webkit-input-placeholder {
+  color: #b2b2b2;
+  font-size: 14px;
+  font-family: 'microsoft yahei';
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b4bac6;
+  border-radius: 3.5px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #f8f8f8;
+}
+
+// --------------------------------------------------------------
+
+// ------------------------去除边框-------------------------------
+
+.no-border {
+  border: none;
+  outline: none;
+}
+
+// --------------------------------------------------------------
+
+// ------------------------光标手势-------------------------------
+
+.pointer {
+  cursor: pointer;
+  user-select: none;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.move {
+  cursor: move;
+  user-select: none;
+}
+
+// --------------------------------------------------------------
+
+// ------------------------清除浮动-------------------------------
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+// ----------------------------------------------------------------
+
+// ------------------------盒模型-----------------------------
+
+.inline-layout {
+  font-size: 0px;
+  &.v-center::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0px;
+    height: 100%;
+  }
+  &.justify {
+    text-align: justify;
+  }
+  &.justify::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0px;
+  }
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.vertical-top {
+  vertical-align: top;
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+.vertical-bottom {
+  vertical-align: bottom;
+}
+
+.display-none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.contents {
+  display: contents;
+}
+
+.content-box {
+  box-sizing: content-box;
+}
+
+// --------------------------------------------------------------
+
+// -----------------------文本处理------------------------------
+
+.select-none {
+  user-select: none;
+}
+
+.select-text {
+  user-select: text;
+}
+
+// 溢出处理
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  &.sl /*single-line*/ {
+    white-space: nowrap;
+  }
+  &.ml /*multi-line*/ {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-last-justify {
+  text-align-last: justify;
+}
+
+// --------------------------------------------------------------
+
+// -------------------------经典布局---------------------------------
+
+.w-auto {
+  width: auto;
+}
+
+.w-100P {
+  width: 100%;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.h-100P {
+  height: 100%;
+}
+
+.wh-fs {
+  width: 1em;
+  height: 1em;
+}
+
+.static {
+  position: static;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.zIndex-auto {
+  z-index: auto;
+}
+
+.zIndex-0 {
+  z-index: 0;
+}
+
+.zIndex-1 {
+  z-index: 1;
+}
+
+.zIndex--1 {
+  z-index: -1;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.margin-lr-auto {
+  margin: 0 auto;
+}
+
+.margin-tb-auto {
+  margin: auto 0;
+}
+
+.margin-l-auto {
+  margin-left: auto;
+}
+
+.margin-r-auto {
+  margin-right: auto;
+}
+
+.margin-t-auto {
+  margin-top: auto;
+}
+
+.margin-b-auto {
+  margin-bottom: auto;
+}
+
+// -------------------------flex布局---------------------------------
+.flex {
+  display: flex;
+}
+.flex-x-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-y-center {
+  display: flex;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-1-w {
+  width: 0;
+  flex: 1;
+}
+.flex-1-h {
+  height: 0 !important;
+  flex: 1;
+}
+.flex-auto {
+  flex: auto;
+}
+
+.flex-grow-0 {
+  flex-grow: 0;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+.flex-shrink {
+  flex-shrink: 1;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+// --------------------------------------------------------------

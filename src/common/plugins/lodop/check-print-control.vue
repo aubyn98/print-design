@@ -20,7 +20,7 @@
         </div>
         <p v-if="downloadEnd" class="_downloaded">下载完成，请安装控件后重启软件</p>
         <p v-else class="_size">
-          <span :style="{ color: downloadEnd ? '' : '#206ef7' }">{{ loadedSize }}MB</span>
+          <span :style="{ color: downloadEnd ? '' : '$clr-blue' }">{{ loadedSize }}MB</span>
           <span style="margin: 0 4px">/</span>
           <span>{{ totalSize }}MB</span>
         </p>
@@ -36,9 +36,10 @@
 </template>
 
 <script tang="ts">
-import { mapState, mapActions, usePrintStore } from 'store'
+import { mapState, mapActions } from 'pinia'
+import usePrintStore from 'store/print-design'
 import { exportFile } from 'utils'
-// import { commonApi } from 'apis'
+import { commonApi } from 'apis'
 import { ElMessage } from 'element-plus'
 export default {
   name: 'CheckPrintControl',
@@ -63,7 +64,7 @@ export default {
       const file = this.control.file
       exportFile({
         type: 'exe',
-        method: Promise.resolve/* commonApi.get_printer_control */,
+        method: commonApi.get_printer_control,
         params: { file },
         name: file,
         downloadStart: () => {

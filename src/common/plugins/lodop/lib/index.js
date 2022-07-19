@@ -47,7 +47,12 @@ function print(temp, data) {
 function preview(temp, data) {
   data = setSystemVariables(data)
   let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.paperWidth, temp.paperHeight)
-  let tempItems = cloneDeep(temp.tempItems)
+  const tempItems = cloneDeep(temp.tempItems).map(it => {
+    if (it.type === 'controls-table') {
+      return { ...it, columns: it.columns.filter(_ => _.visible) }
+    }
+    return it
+  })
   let printContent = _TempParser(tempItems, data)
   if (data.length > 1) {
     // 打印多份
@@ -203,11 +208,11 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
     case 'controls-line': {
       if (printItem.direction === 'vertical') {
         // 竖线
-        LODOP.ADD_PRINT_LINE(printItem.top, printItem.left, printItem.top + printItem.height, printItem.left, printItem.lineType || 0, 1)
+        LODOP.ADD_PRINT_SHAPE(1, printItem.top, printItem.left, 1, printItem.height, 0, 1, lodopStyle.Background)
         break
       }
       // 横线
-      LODOP.ADD_PRINT_LINE(printItem.top, printItem.left, printItem.top, printItem.left + printItem.width, printItem.lineType || 0, 1)
+      LODOP.ADD_PRINT_SHAPE(1, printItem.top, printItem.left, printItem.width, 1, 0, 1, lodopStyle.Background)
       break
     }
     default:

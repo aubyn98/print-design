@@ -212,7 +212,7 @@ export const codeTypeList = [
   'MSI',
   'PostNet',
   'Codabar',
-  'QRCode',
+  // 'QRCode',
   'PDF417',
 ]
 
@@ -220,7 +220,7 @@ export const controlsType: IndexType = {
   'controls-line': '线条',
   'controls-table': '表格',
   'controls-image': '图片',
-  'controls-code': 'Code',
+  'controls-code': '条码',
   'controls-html': 'HTML超文本',
   'controls-txt': '文本',
 }
@@ -246,7 +246,7 @@ export function getTempItem(opts: IndexType) {
       style: {
         zIndex: 0,
         FontSize: 9,
-        FontColor: '#000000',
+        Background: '#000',
         Bold: false, // 1代表粗体，0代表非粗体
         Italic: false, // 1代表斜体，0代表非斜体
         Underline: false, // 1代表有下划线，0代表无下划线

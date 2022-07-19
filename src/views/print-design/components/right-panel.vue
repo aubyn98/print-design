@@ -2,7 +2,7 @@
   <div class="right-panel flex flex-col">
     <header class="_header flex-y-center justify-between">
       <span>参数</span>
-      <quick-svg class="pointer" :name="visible ? 'icon-icon_dropdown' : 'icon-icon_intothe'" size="12px" @click="visible = !visible" />
+      <quick-svg class="pointer" :name="visible ? 'icon-dropdown' : 'icon-intothe'" size="12px" @click="visible = !visible" />
     </header>
     <el-scrollbar class="_scroll flex-1-h" always>
       <el-collapse-transition>
@@ -28,7 +28,7 @@
               </el-form-item>
             </div>
             <el-form-item label="常用纸张">
-              <el-select :model-value="pageType" @update:model-value="changePageType" @change="$emit('update-page-size')" clearable>
+              <el-select :model-value="pageType" clearable @update:model-value="changePageType" @change="$emit('update-page-size')">
                 <el-option v-for="size in sizeList" :key="size" :label="size" :value="size"></el-option>
               </el-select>
             </el-form-item>
@@ -39,10 +39,10 @@
               <el-form-item class="flex" label="组件类型">
                 <el-input readonly :model-value="controlsType[activeItem.type]" borderColor="transparent" />
               </el-form-item>
-              <el-form-item class="flex" label="标题">
+              <el-form-item v-show="!activeType.isCode && !activeType.isLine && !activeType.isImage" class="flex" label="标题">
                 <el-input :model-value="activeItem.title" @input="changeTempItem('title', $event)" />
               </el-form-item>
-              <el-form-item class="flex" label="内容">
+              <el-form-item v-show="!activeType.isLine && !activeType.isImage" class="flex" label="内容">
                 <el-input :readonly="activeItem.name.length > 0" :model-value="activeItem.value" @input="changeTempItem('value', $event)" />
               </el-form-item>
               <div class="flex">
@@ -94,39 +94,50 @@
                   <el-color-picker :model-value="activeItem.style.BorderColor" @change="changeTempItemStyle('BorderColor', $event)" />
                 </el-form-item>
               </div>
-              <el-form-item v-show="activeType.isLine" class="flex" label="线条类型">
-                <el-select :clearable="false" :model-value="activeItem.direction" @change="changeTempItem('direction', $event)">
-                  <el-option
-                    v-for="lineType in [
-                      { label: '水平', value: 'horizontal' },
-                      { label: '垂直', value: 'vertical' },
-                    ]"
-                    :key="lineType.value"
-                    :label="lineType.label"
-                    :value="lineType.value"
-                  ></el-option>
-                </el-select>
-              </el-form-item>
-              <div v-show="activeType.isCode">
-                <el-form-item class="flex-y-center" label="条码值">
-                  <el-switch :model-value="activeItem.style.ShowBarText" @change="changeTempItemStyle('ShowBarText', $event)" />
+              <template v-if="activeType.isLine">
+                <el-form-item class="flex" label="线条类型">
+                  <el-select :clearable="false" :model-value="activeItem.direction" @change="changeTempItem('direction', $event)">
+                    <el-option
+                      v-for="lineType in [
+                        { label: '水平', value: 'horizontal' },
+                        { label: '垂直', value: 'vertical' },
+                      ]"
+                      :key="lineType.value"
+                      :label="lineType.label"
+                      :value="lineType.value"
+                    ></el-option>
+                  </el-select>
                 </el-form-item>
-                <el-form-item class="flex" label="条码类型">
-                  <el-select :model-value="activeItem.style.codeType" @change="changeTempItemStyle('codeType', $event)" clearable>
+                <el-form-item class="flex" label="线条颜色">
+                  <el-color-picker :model-value="activeItem.style.Background" @change="changeTempItemStyle('Background', $event)" />
+                </el-form-item>
+              </template>
+
+              <div v-show="activeType.isCode">
+                <el-form-item v-if="activeItem.style.codeType !== 'QRCode'" class="flex-y-center" label="条码值">
+                  <c-el-switch :model-value="activeItem.style.ShowBarText" @change="changeTempItemStyle('ShowBarText', $event)" />
+                </el-form-item>
+                <el-form-item v-if="activeItem.style.codeType !== 'QRCode'" class="flex" label="条码类型">
+                  <el-select :model-value="activeItem.style.codeType" clearable @change="changeTempItemStyle('codeType', $event)">
                     <el-option v-for="codeType in codeTypeList" :key="codeType" :label="codeType" :value="codeType"></el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item class="flex" label="数据源">
+                  <el-select v-model="dataSourceItem" value-key="name" clearable @change="changeTempItem('name', $event.name || ''), changeTempItem('value', $event.defaultValue)">
+                    <el-option v-for="item in calcDataSource" :key="item.name" :label="item.label" :value="item"></el-option>
                   </el-select>
                 </el-form-item>
               </div>
             </el-form>
             <template v-if="activeType.isTable">
               <header class="lh-20 fs-13 margin-b-12 select-none flex-shrink-0">表格列</header>
-              <el-scrollbar tag="ul" class="flex-1-h _scroll pd-b-12" always>
-                <li v-for="(col, i) in activeItem.columns" :key="col.name" class="flex">
+              <el-scrollbar tag="ul" class="flex-1-h pd-b-12 pd-l-12" always>
+                <li v-for="(col, i) in activeItem.columns" :key="col.name" class="flex justify-between">
                   <el-checkbox style="margin-right: 20px" :model-value="col.visible" @update:model-value="changeColsHandle(i, $event, 'visible')">
                     {{ col.title }}
                   </el-checkbox>
                   <el-form>
-                    <el-form-item label="宽" class="margin-r-10" labelPadding="0 8px 0 0">
+                    <el-form-item label="宽" labelPadding="0 8px 0 0">
                       <el-input-number :model-value="Number(col.width)" controls-position="right" @update:model-value="changeColsHandle(i, $event, 'width')" />
                     </el-form-item>
                   </el-form>
@@ -143,15 +154,18 @@
 <script lang="ts" setup>
 import { usePrintStore, storeToRefs, paperData } from 'store'
 import { ElInputNumber } from 'element-plus'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const { sizeList, codeTypeList, controlsType } = paperData
 
 defineEmits(['update-page-size'])
 
 const designStore = usePrintStore()
-const { template, pageRect, pageType, activeItem, activeType } = storeToRefs(designStore)
+const { template, pageRect, pageType, activeItem, activeType, datasource } = storeToRefs(designStore)
 const { changePageSize, changePageType, changeTempItem, changeTempItemStyle, changeColsHandle } = designStore
+const calcDataSource = computed(() => datasource.value.filter(it => it.type !== 'controls-table'))
+
+const dataSourceItem = ref({ name: '' })
 
 const visible = ref(true)
 </script>
